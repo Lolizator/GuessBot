@@ -7,7 +7,7 @@ function guessRandomNumber() {
 
     return function() {
         if (counter === 10){
-            alert('У вас закончилсиь попытки, вы проиграли!');
+            confirm('Попытки закончились, хотите сыграть еще?');
         }
 
 
@@ -31,7 +31,10 @@ function guessRandomNumber() {
             game();
         }
         else {
-            alert('Поздравляю, Вы угадали!!!');
+            let consent = confirm('Поздравляю, Вы угадали!!! Хотели бы сыграть еще?');
+            if (consent === true) {
+                game();
+            }
         }
     }
 }
