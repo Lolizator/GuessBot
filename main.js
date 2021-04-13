@@ -2,8 +2,15 @@
 
 function guessRandomNumber() {
     let randomNumber = Math.floor(Math.random() * 100 + 1);
+    let counter = 0;
+    let tries = 10;
 
     return function() {
+        if (counter === 10){
+            alert('У вас закончилсиь попытки, вы проиграли!');
+        }
+
+
         let answer = prompt("Угадай число от 1 до 100");
         if (answer === null) {
             alert('Игра окончена');
@@ -14,11 +21,13 @@ function guessRandomNumber() {
             game();
         } 
         else if (answer > randomNumber) {
-            alert('Загаданное число меньше');
+            counter++;
+            alert(`Загаданное число меньше, у вас осталось ${tries - counter} попыток`);
             game();
         } 
         else if (answer < randomNumber) {
-            alert('Загаданное число больше');
+            counter++;
+            alert(`Загаданное число больше, у вас осталось ${tries - counter} попыток`);
             game();
         }
         else {
